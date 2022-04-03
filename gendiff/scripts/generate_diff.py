@@ -8,14 +8,11 @@ def generate_diff(pathtofile1, pathtofile2):
     file2 = json.load(pathtofile2)
     setfile1 = set(file1.keys())
     setfile2 = set(file2.keys())
-    onlyfile1 = setfile1 - setfile2
-    onlyfile2 = setfile2 - setfile1
-    intersectionfiles = setfile1 & setfile2
-    for item in onlyfile1:
+    for item in setfile1 - setfile2:
         ans.append((item, '-', file1[item]))
-    for item in onlyfile2:
+    for item in setfile2 - setfile1:
         ans.append((item, '+', file2[item]))
-    for item in intersectionfiles:
+    for item in setfile1 & setfile2:
         if file1[item] == file2[item]:
             ans.append((item, ' ', file1[item]))
         else:
@@ -25,6 +22,6 @@ def generate_diff(pathtofile1, pathtofile2):
     ans.sort(key=itemgetter(0))
     ansstring = '{\n'
     for item in ans:
-        ansstring = ansstring + "  {} {}: {}\n".format(item[1], item[0], item[2])
-    ansstring = ansstring+'}'
+        ansstring = ansstring + "  {} {}: {}\n".format(item[1], item[0], item[2]) # noqa E501
+    ansstring = ansstring + '}'
     return ansstring

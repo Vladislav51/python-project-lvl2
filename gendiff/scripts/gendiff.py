@@ -1,7 +1,6 @@
 import argparse
 import sys
 from gendiff.scripts.generate_diff import generate_diff
-import os
 
 
 def gendifference(argv):
@@ -19,7 +18,6 @@ def gendifference(argv):
 def main():
     sys.exit(print(gendifference(sys.argv[1:])))
 
-    
 
 if __name__ == '__main__':
     main()
