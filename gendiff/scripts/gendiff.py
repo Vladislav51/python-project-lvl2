@@ -10,9 +10,9 @@ def gendifference(argv):
     parser.add_argument('file2', metavar='second_file',
                         type=argparse.FileType('r'), nargs='?')
     parser.add_argument('-f', '--format',
-                        help='set format of output')
+                        help='set format of output',type=ascii,dest='format_name')
     args = parser.parse_args(argv)
-    return generate_diff(args.file1, args.file2)
+    return generate_diff(args.file1, args.file2, args.format_name)
 
 
 def main():
