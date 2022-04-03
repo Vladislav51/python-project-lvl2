@@ -1,11 +1,21 @@
 import json
 from operator import itemgetter
+import yaml
+import os
+
+
+def openfile(filewrapper):
+    if os.path.splitext(filewrapper.name)[1] in ['.yml','.yaml']:
+        file = yaml.load(filewrapper, Loader=yaml.Loader)
+    if os.path.splitext(filewrapper.name)[1] in ['.json']:
+        file = json.load(filewrapper)
+    return file 
 
 
 def generate_diff(pathtofile1, pathtofile2):
     ans = []
-    file1 = json.load(pathtofile1)
-    file2 = json.load(pathtofile2)
+    file1 = openfile(pathtofile1)
+    file2 = openfile(pathtofile2)
     setfile1 = set(file1.keys())
     setfile2 = set(file2.keys())
     for item in setfile1 - setfile2:
