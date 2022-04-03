@@ -23,7 +23,8 @@ def generate_diff(pathtofile1, pathtofile2):
             ans.append((item, '+', file2[item]))
     ans.sort(key=itemgetter(1), reverse=True)
     ans.sort(key=itemgetter(0))
-    print('{')
+    ansstring = '{\n'
     for item in ans:
-        print("  {} {}: {}".format(item[1], item[0], item[2]))
-    print('}')
+        ansstring = ansstring + "  {} {}: {}\n".format(item[1], item[0], item[2])
+    ansstring = ansstring+'}'
+    return ansstring
