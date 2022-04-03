@@ -1,0 +1,8 @@
+{
+  "common": {
+    "setting1": "Value 1",
+    "setting2": 200
+    },
+  "group1": "Hello",
+  "group2": "Hello"
+}
