@@ -44,7 +44,7 @@ def formate_items(value):
     
                 
 
-def generate_diff(pathtofile1, pathtofile2, format_name='complex'):
+def generate_diff_func(pathtofile1, pathtofile2, format_name='complex'):
     if format_name == "'plain'":
         ans = diff_dict_plain(openfile(pathtofile1), openfile(pathtofile2)) 
         #print(ans)

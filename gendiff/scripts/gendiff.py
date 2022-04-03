@@ -1,6 +1,6 @@
 import argparse
 import sys
-from gendiff.scripts.generate_diff import generate_diff
+from gendiff.scripts.generate_diff import generate_diff_func
 
 
 def gendifference(argv):
@@ -12,10 +12,13 @@ def gendifference(argv):
     parser.add_argument('-f', '--format',
                         help='set format of output',type=ascii,dest='format_name')
     args = parser.parse_args(argv)
-    return generate_diff(args.file1, args.file2, args.format_name)
+    return generate_diff_func(args.file1, args.file2, args.format_name)
 
 
 def main():
+    sys.exit(print(gendifference(sys.argv[1:])))
+
+def generate_diff():
     sys.exit(print(gendifference(sys.argv[1:])))
 
 
